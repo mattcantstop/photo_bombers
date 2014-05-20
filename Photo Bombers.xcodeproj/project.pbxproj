@@ -19,6 +19,7 @@
 		C91AC930192B9FA80078A22B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C91AC918192B9FA80078A22B /* UIKit.framework */; };
 		C91AC938192B9FA80078A22B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C91AC936192B9FA80078A22B /* InfoPlist.strings */; };
 		C91AC93A192B9FA80078A22B /* Photo_BombersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C91AC939192B9FA80078A22B /* Photo_BombersTests.m */; };
+		C91AC945192BA03E0078A22B /* TTPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91AC944192BA03E0078A22B /* TTPhotosViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		C91AC935192B9FA80078A22B /* Photo BombersTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Photo BombersTests-Info.plist"; sourceTree = "<group>"; };
 		C91AC937192B9FA80078A22B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C91AC939192B9FA80078A22B /* Photo_BombersTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Photo_BombersTests.m; sourceTree = "<group>"; };
+		C91AC943192BA03E0078A22B /* TTPhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTPhotosViewController.h; sourceTree = "<group>"; };
+		C91AC944192BA03E0078A22B /* TTPhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTPhotosViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 				C91AC924192B9FA80078A22B /* TTAppDelegate.m */,
 				C91AC926192B9FA80078A22B /* Images.xcassets */,
 				C91AC91B192B9FA80078A22B /* Supporting Files */,
+				C91AC943192BA03E0078A22B /* TTPhotosViewController.h */,
+				C91AC944192BA03E0078A22B /* TTPhotosViewController.m */,
 			);
 			path = "Photo Bombers";
 			sourceTree = "<group>";
@@ -241,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C91AC925192B9FA80078A22B /* TTAppDelegate.m in Sources */,
+				C91AC945192BA03E0078A22B /* TTPhotosViewController.m in Sources */,
 				C91AC921192B9FA80078A22B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
