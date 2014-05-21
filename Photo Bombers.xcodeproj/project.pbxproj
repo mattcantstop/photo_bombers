@@ -20,6 +20,7 @@
 		C91AC938192B9FA80078A22B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C91AC936192B9FA80078A22B /* InfoPlist.strings */; };
 		C91AC93A192B9FA80078A22B /* Photo_BombersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C91AC939192B9FA80078A22B /* Photo_BombersTests.m */; };
 		C91AC945192BA03E0078A22B /* TTPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C91AC944192BA03E0078A22B /* TTPhotosViewController.m */; };
+		C91AC948192CF2510078A22B /* TTPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C91AC947192CF2510078A22B /* TTPhotoCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		C91AC939192B9FA80078A22B /* Photo_BombersTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Photo_BombersTests.m; sourceTree = "<group>"; };
 		C91AC943192BA03E0078A22B /* TTPhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTPhotosViewController.h; sourceTree = "<group>"; };
 		C91AC944192BA03E0078A22B /* TTPhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTPhotosViewController.m; sourceTree = "<group>"; };
+		C91AC946192CF2510078A22B /* TTPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTPhotoCell.h; sourceTree = "<group>"; };
+		C91AC947192CF2510078A22B /* TTPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTPhotoCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,8 @@
 				C91AC91B192B9FA80078A22B /* Supporting Files */,
 				C91AC943192BA03E0078A22B /* TTPhotosViewController.h */,
 				C91AC944192BA03E0078A22B /* TTPhotosViewController.m */,
+				C91AC946192CF2510078A22B /* TTPhotoCell.h */,
+				C91AC947192CF2510078A22B /* TTPhotoCell.m */,
 			);
 			path = "Photo Bombers";
 			sourceTree = "<group>";
@@ -247,6 +252,7 @@
 			files = (
 				C91AC925192B9FA80078A22B /* TTAppDelegate.m in Sources */,
 				C91AC945192BA03E0078A22B /* TTPhotosViewController.m in Sources */,
+				C91AC948192CF2510078A22B /* TTPhotoCell.m in Sources */,
 				C91AC921192B9FA80078A22B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
