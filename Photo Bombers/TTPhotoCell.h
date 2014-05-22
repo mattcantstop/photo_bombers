@@ -11,5 +11,6 @@
 @interface TTPhotoCell : UICollectionViewCell
 
 @property (nonatomic) UIImageView *imageView;
+@property (nonatomic) NSDictionary *photo;
 
 @end

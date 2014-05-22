@@ -36,6 +36,12 @@
 #define COCOAPODS_VERSION_MINOR_ReactiveCocoa_no_arc 3
 #define COCOAPODS_VERSION_PATCH_ReactiveCocoa_no_arc 0
 
+// SAMCache
+#define COCOAPODS_POD_AVAILABLE_SAMCache
+#define COCOAPODS_VERSION_MAJOR_SAMCache 0
+#define COCOAPODS_VERSION_MINOR_SAMCache 3
+#define COCOAPODS_VERSION_PATCH_SAMCache 0
+
 // SimpleAuth/Core
 #define COCOAPODS_POD_AVAILABLE_SimpleAuth_Core
 #define COCOAPODS_VERSION_MAJOR_SimpleAuth_Core 0

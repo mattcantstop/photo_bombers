@@ -8,11 +8,16 @@
 
 #import "TTAppDelegate.h"
 #import "TTPhotosViewController.h"
+#import <SimpleAuth/SimpleAuth.h>
 
 @implementation TTAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    SimpleAuth.configuration[@"instagram"] = @{
+        @"client_id" : @"2e31e49739cd4d8d9c9a0a709d9e7ab4",
+        SimpleAuthRedirectURIKey : @"photobombers://auth/instagram"
+    };
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     TTPhotosViewController *photosViewController = [[TTPhotosViewController alloc] init];
