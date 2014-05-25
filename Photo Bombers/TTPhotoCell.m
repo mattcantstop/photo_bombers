@@ -13,6 +13,8 @@
 
 - (void) setPhoto:(NSDictionary *)photo {
     _photo = photo;
+    NSString *debuggedString = _photo[@"images"][@"thumbnail"][@"url"];
+    NSLog(@"%@", debuggedString);
     NSURL *url = [[NSURL alloc] initWithString:_photo[@"images"][@"thumbnail"][@"url"]];
     [self downloadPhotoWithURL:url];
 }
