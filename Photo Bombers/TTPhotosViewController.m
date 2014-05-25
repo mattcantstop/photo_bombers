@@ -62,7 +62,7 @@
         
         NSData *data = [[NSData alloc] initWithContentsOfURL:location];
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-        NSLog(@"Response: %@", responseDictionary);
+//        NSLog(@"Response: %@", responseDictionary);
         self.photos = [responseDictionary valueForKeyPath:@"data.images.standard_resolution.url"];
         
         dispatch_async(dispatch_get_main_queue(), ^{
