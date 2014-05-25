@@ -25,6 +25,13 @@
     [TTPhotoController imageForPhoto:self.photo size:@"standard_resolution" completion:^(UIImage *image) {
         self.imageView.image = image;
     }];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(close)];
+    [self.view addGestureRecognizer:tap];
+}
+
+- (void) close {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
