@@ -8,6 +8,7 @@
 
 #import "TTPhotosViewController.h"
 #import "TTPhotoCell.h"
+#import "TTDetailViewController.h"
 
 #import <SimpleAuth/Simpleauth.h>
 
@@ -42,11 +43,13 @@
     self.accessToken = [userDefaults objectForKey:@"accessToken"];
     
     if (self.accessToken == nil) {
-        [SimpleAuth authorize:@"instagram" completion:^(NSDictionary *responseObject, NSError *error) {
-            NSString *accessToken = responseObject[@"credentials"][@"token"];
+        [SimpleAuth authorize:@"instagram" options:@{@"scope": @[@"likes"]} completion:^(NSDictionary *responseObject, NSError *error) {
+            self.accessToken = responseObject[@"credentials"][@"token"];
             
-            [userDefaults setObject:accessToken forKey:@"accessToken"];
+            [userDefaults setObject:self.accessToken forKey:@"accessToken"];
             [userDefaults synchronize];
+            
+            [self refresh];
         }];
     } else {
         [self refresh];
@@ -62,8 +65,7 @@
         
         NSData *data = [[NSData alloc] initWithContentsOfURL:location];
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-//        NSLog(@"Response: %@", responseDictionary);
-        self.photos = [responseDictionary valueForKeyPath:@"data.images.standard_resolution.url"];
+        self.photos = [responseDictionary valueForKeyPath:@"data"];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.collectionView reloadData];
@@ -83,6 +85,14 @@
     cell.photo = self.photos[indexPath.row];
     
     return cell;
+}
+
+- (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *photo = self.photos[indexPath.row];
+    TTDetailViewController *viewController = [[TTDetailViewController alloc] init];
+    viewController.photo = photo;
+    
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 @end

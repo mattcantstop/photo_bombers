@@ -7,15 +7,15 @@
 //
 
 #import "TTPhotoCell.h"
-#import <SAMCache/SAMCache.h>
+#import "TTPhotoController.h"
 
 @implementation TTPhotoCell
 
 - (void)setPhoto:(NSDictionary *)photo {
     _photo = photo;
-    NSLog(@"Photo: %@", _photo);
-    NSURL *url = [[NSURL alloc] initWithString:_photo[@"images"][@"thumbnail"][@"url"]];
-    [self downloadPhotoWithURL:url];
+    [TTPhotoController imageForPhoto:_photo size:@"thumbnail" completion:^(UIImage *image) {
+        self.imageView.image = image;
+    }];
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -33,6 +33,8 @@
 }
 
 - (void) like {
+    NSLog(@"Link: %@", self.photo[@"link"]);
+    
     NSURLSession *session = [NSURLSession sharedSession];
     NSString *accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"accessToken"];
     NSString *likeURLString = [[NSString alloc] initWithFormat:@"https://api.instagram.com/v1/media/%@/likes?access_token=%@", self.photo[@"id"], accessToken];
@@ -40,10 +42,14 @@
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:likeURL];
     request.HTTPMethod = @"POST";
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSLog(@"Response: %@", response);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self showLikeCompletion];
+        });
     }];
     [task resume];
-    
+}
+
+- (void) showLikeCompletion {
     UIAlertView *likeAlert = [[UIAlertView alloc] initWithTitle:@"Liked!" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:nil, nil];
     [likeAlert show];
     
@@ -56,27 +62,6 @@
     [super layoutSubviews];
     
     self.imageView.frame = self.contentView.bounds;
-}
-
-- (void) downloadPhotoWithURL:(NSURL *)url {
-    NSString *key = [[NSString alloc] initWithFormat:@"%@-thumbnail", self.photo[@"id"]];
-    UIImage *photo = [[SAMCache sharedCache] imageForKey:key];
-    if (photo) {
-        self.imageView.image = photo;
-        return;
-    }
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-        NSData *data = [[NSData alloc] initWithContentsOfURL:location];
-        UIImage *image =[[UIImage alloc] initWithData:data];
-        [[SAMCache sharedCache] setImage:image forKey:key];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.imageView.image = image;
-        });
-    }];
-    [task resume];
 }
 
 @end
